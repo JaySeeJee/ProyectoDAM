@@ -73,14 +73,14 @@ public class VacantesController {
 			return "vacantes/formVacante";
 		}
 		
-		if (!multiPart.isEmpty()) {
+	 /* 	if (!multiPart.isEmpty()) {
 			//String ruta = "/empleos/img-vacantes/"; // Linux/MAC
 			//String ruta = "c:/empleos/img-vacantes/"; // Windows
 			String nombreImagen = Utileria.guardarArchivo(multiPart, ruta);
 			if (nombreImagen != null){ 
 				vacante.setImagen(nombreImagen);
 			}
-		}
+		}*/
 		
 		serviceVacantes.guardar(vacante);
 		attributes.addFlashAttribute("msg", "Registro Guardado");		
