@@ -6,9 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -16,11 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Usuarios")
-public class Usuario {
+public class Usuario extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment MySQL
-	private Integer id;
+
 	private String username;
 	private String nombre;
 	private String email;
@@ -39,14 +34,6 @@ public class Usuario {
 			perfiles = new LinkedList<Perfil>();
 		}
 		perfiles.add(tempPerfil);
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getUsername() {
@@ -108,8 +95,10 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username + ", nombre=" + nombre + ", email=" + email
-				+ ", password=" + password + ", estatus=" + estatus + ", fechaRegistro=" + fechaRegistro + "]";
+		return "Usuario [email=" + email + ", estatus=" + estatus + ", fechaRegistro=" + fechaRegistro + ", nombre="
+				+ nombre + ", password=" + password + ", perfiles=" + perfiles + ", username=" + username + "]";
 	}
+
+	
 	
 }

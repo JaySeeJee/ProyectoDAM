@@ -1,27 +1,16 @@
 package com.guarenasapp.proyect.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Perfiles")
-public class Perfil {
+public class Perfil extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment MySQL
-	private Integer id;
+
 	private String perfil;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 
 	public String getPerfil() {
 		return perfil;
@@ -33,7 +22,9 @@ public class Perfil {
 
 	@Override
 	public String toString() {
-		return "Perfil [id=" + id + ", perfil=" + perfil + "]";
+		return "Perfil [perfil=" + perfil + "]";
 	}
+
+	
 
 }

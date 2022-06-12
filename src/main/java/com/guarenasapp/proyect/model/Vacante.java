@@ -2,20 +2,14 @@ package com.guarenasapp.proyect.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Vacantes")
-public class Vacante {
+public class Vacante extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
 	private String nombre;
 	private String descripcion;
 	private Date fecha;
@@ -28,14 +22,6 @@ public class Vacante {
     @OneToOne
 	@JoinColumn(name="idCategoria")
 	private Categoria categoria;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -122,9 +108,11 @@ public class Vacante {
 
 	@Override
 	public String toString() {
-		return "Vacante [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fecha=" + fecha
-				+ ", salario=" + salario + ", destacado=" + destacado + ", imagen=" + imagen + ", estatus=" + estatus
-				+ ", categoria=" + categoria + "]";
+		return "Vacante [categoria=" + categoria + ", descripcion=" + descripcion + ", destacado=" + destacado
+				+ ", detalles=" + detalles + ", estatus=" + estatus + ", fecha=" + fecha + ", imagen=" + imagen
+				+ ", nombre=" + nombre + ", salario=" + salario + "]";
 	}
+
+	
 
 }

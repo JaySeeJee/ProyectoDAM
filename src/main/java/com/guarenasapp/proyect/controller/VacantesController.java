@@ -27,7 +27,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.guarenasapp.proyect.model.Vacante;
 import com.guarenasapp.proyect.service.ICategoriasService;
 import com.guarenasapp.proyect.service.IVacantesService;
-import com.guarenasapp.proyect.util.Utileria;
 
 
 
@@ -72,15 +71,7 @@ public class VacantesController {
 			}			
 			return "vacantes/formVacante";
 		}
-		
-	 /* 	if (!multiPart.isEmpty()) {
-			//String ruta = "/empleos/img-vacantes/"; // Linux/MAC
-			//String ruta = "c:/empleos/img-vacantes/"; // Windows
-			String nombreImagen = Utileria.guardarArchivo(multiPart, ruta);
-			if (nombreImagen != null){ 
-				vacante.setImagen(nombreImagen);
-			}
-		}*/
+	
 		
 		serviceVacantes.guardar(vacante);
 		attributes.addFlashAttribute("msg", "Registro Guardado");		

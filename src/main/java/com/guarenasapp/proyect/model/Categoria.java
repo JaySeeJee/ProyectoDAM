@@ -1,28 +1,17 @@
 package com.guarenasapp.proyect.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Categorias")
-public class Categoria {
+public class Categoria extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	
 	private String nombre;
 	private String descripcion;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -42,7 +31,9 @@ public class Categoria {
 
 	@Override
 	public String toString() {
-		return "Categoria [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+		return "Categoria [descripcion=" + descripcion + ", nombre=" + nombre + "]";
 	}
+
+	
 
 }
