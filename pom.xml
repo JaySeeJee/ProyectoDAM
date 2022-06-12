@@ -9,7 +9,7 @@
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
-	<groupId>net.itinajero</groupId>
+	<groupId>com.guarenasapp</groupId>
 	<artifactId>empleos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>empleos</name>
@@ -37,6 +37,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.29</version>
 			<scope>runtime</scope>
 		</dependency>
 
