@@ -4,6 +4,8 @@ package com.guarenasapp.proyect.model;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -11,9 +13,24 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.SQLDelete;
+
+import com.guarenasapp.proyect.soft_delete.SoftDeletableBaseEntity;
+import com.guarenasapp.proyect.soft_delete.SoftDeleteFilters;
+
+
 @Entity
-@Table(name = "Usuarios")
-public class Usuario extends BaseEntity {
+@Table(name = Usuario.TABLE_NAME)
+@SQLDelete(sql = "UPDATE " + Usuario.TABLE_NAME + " SET deleted_at = NOW() WHERE id=?")
+@FilterDef(name = SoftDeleteFilters.NOT_TRASHED)
+@Filter(name = SoftDeleteFilters.NOT_TRASHED, condition = "deleted_at IS NULL")
+@FilterDef(name = SoftDeleteFilters.ONLY_TRASHED)
+@Filter(name =  SoftDeleteFilters.ONLY_TRASHED, condition = "deleted_at IS NOT NULL")
+public class Usuario extends SoftDeletableBaseEntity {
+
+	static final String TABLE_NAME = "Usuarios";
 
 
 	private String username;
@@ -22,6 +39,10 @@ public class Usuario extends BaseEntity {
 	private String password;
 	private Integer estatus;	
 	private Date fechaRegistro;
+
+	@Column(name = "deleted_at")
+    private Date deletedAt;
+	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="UsuarioPerfil",
 			   joinColumns = @JoinColumn(name="idUsuario"),
