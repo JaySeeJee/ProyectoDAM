@@ -54,7 +54,7 @@ public class CategoriasController {
 		// Guadamos el objeto categoria en la bd
 		serviceCategorias.guardar(categoria);
 		attributes.addFlashAttribute("msg", "Los datos de la categoría fueron guardados!");		
-		return "redirect:/categorias/index";
+		return "redirect:/categorias/indexPaginate";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -69,7 +69,7 @@ public class CategoriasController {
 		// Eliminamos la categoria.
 		serviceCategorias.eliminar(idCategoria);			
 		attributes.addFlashAttribute("msg", "La categoría fue eliminada!.");
-		return "redirect:/categorias/index";
+		return "redirect:/categorias/indexPaginate";
 	}
 	
 }
